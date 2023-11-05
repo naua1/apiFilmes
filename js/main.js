@@ -1,7 +1,9 @@
+
 const apiKey = 'a8aeb895d06ece2c3ea03d50af7602fd';
 const imgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
 const filmesAlta = document.getElementById('alta');
 const imagem = document.getElementById('imagem');
+
 
 
 //------------------------------------------------------------------//
@@ -16,13 +18,15 @@ const sinopse = document.getElementById('sino')
 //------------------------------------------------------------------//
 
 
+
 const fetchFilmes = async (url) => {
   const response = await fetch(url);
   return response.json();
 }
 
 
-const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR&query${pesquisa.value}`;
+const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR`;
+
 
 async function carregarFilmesPopulares() {
   try {
@@ -52,6 +56,7 @@ function renderizarFilmes(filmes) {
         filmesAlta.appendChild(cartao)
 
     }
+
 
 }
 
@@ -100,13 +105,8 @@ carregarFilmesPopulares();
 
 
 
-/* 
 
-fetch(`${buscar}&query=jogos mortal`)
-.then((res) => res.json())
-.then((data) => {
-    console.log(data.results[5])
-    corpo.innerHTML = `<img src="${img}${data.results[0].poster[_path
-    }" alt="">`
-})
-*/
+
+
+
+
