@@ -11,28 +11,36 @@
 
 
 <body>
-    <div id="barra_busca">
-        <input id='pesquisa' type="text">
-        <button id="btn">buscar</button>
+    <div class="barra_busca" id="barra_busca">
+        <input class="busca" id='pesquisa' type="text">
+        <button class='btn_pesquisa' id="btn">buscar</button>
     </div>
+
+  
 
     <div class="info" id="infos">
-        <div id='titulo' class="titulo"></div>
-        <div id="nD" class="Nota_Data"></div>
-        <div id="sino" class="sino"></div>
-        <div class="imagem" id="img"></div>
+        <div class="texto">
+            <div id='titulo' class="titulo"></div>
+            <div id="Data" class="Data"></div>
+            <div id="sino" class="sino"></div>
+        </div>
+        
+        <div class="imagem" id="imagemPagina"></div>
     </div>
 
-    <section>
+    <div class="filmeBsucado" id="filmesBuscados">
+    </div>
+    
+
+    <section class="sessao_alta">
         <h2 class="h2_alta">Em Alta</h2>
-        <div  class="alta" id="alta">
-            
-        </div>
+        <div  class="alta" id="alta"></div>
     </section>
     
 
     
 </body>
 <script src="js/main.js"></script>
+<script src="js/busca.js"></script>
 </html>
 

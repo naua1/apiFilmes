@@ -13,9 +13,10 @@ body{
 
 
 .alta{
-    margin-top:5% ;
+    
     display: grid;
     grid-template-columns: repeat(7,1fr);
+    margin-top: 2%;
 }
 
 .cartao{
@@ -29,8 +30,90 @@ body{
     height: 100%;
 }
 
+
+.sessao_alta{
+    margin-top: 10%;
+   
+}
+
 .h2_alta{
     color: #f5f5f5;
     font-size: 36px;
+    margin-left: 5%;
+
 }
 
+
+.info{
+    
+    height: 0PX;
+ 
+}
+
+
+.imagem{
+    
+    justify-self: center;
+    
+}
+
+.texto{
+   
+    padding: 10%;
+    color:#f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.titulo{
+    margin-bottom: 5%;
+}
+
+.Data{
+    margin-bottom: 5%;
+}
+
+.barra_busca{
+    margin: 2% 0;
+    height: 100px;
+    text-align: center;
+}
+.busca{
+    
+    background-color: transparent;
+    border:solid 1px#f5f5f5;
+    width: 40%;
+    height: 25%;
+    color: #f5f5f5;
+
+    
+}
+
+.existe{
+    background-color: #323438;
+    height: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+   margin: 5% 0;
+    width: 100%;
+    
+
+}
+
+.btn_pesquisa{
+    background-color: #f5f5f5;
+    border:none;
+    padding: 5px;
+    border-radius: 0px 5px 5px 0px;
+
+
+}
+
+.filmeBsucado{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap:20px;
+}

@@ -1,50 +1,106 @@
-const apiKey = 'a8aeb895d06ece2c3ea03d50af7602fd'
-const corpo = document.getElementById('corpo')
-const nomeFilme = document.getElementById('pesquisa')
-const popular = `https://api.themoviedb.org/3/movie/popular?api_
-key=${apiKey}&language=pt-BR`
-const buscar = `https://api.themoviedb.org/3/search/movie?api_
-key=${apiKey}&language=pt-BR&query=${nomeFilme.value}`
-const img = 'https://image.tmdb.org/t/p/w500/'
-const infos = document.getElementById('infos')
-const btn = document.getElementById('btn')
-
-const titulo = document.getElementById('titulo')
-const NotasDatas = document.getElementById('nD')
-const sino = document.getElementById('sino')
-const filmesAlta = document.getElementById('alta')
-const botoesAlta = document.querySelectorAll('.btn_alta');
+const apiKey = 'a8aeb895d06ece2c3ea03d50af7602fd';
+const imgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
+const filmesAlta = document.getElementById('alta');
+const imagem = document.getElementById('imagem');
 
 
+//------------------------------------------------------------------//
 
- const fetchFilmes  = async (param) =>{
-    const res = await fetch(`${param}`)
-    return res.json()
+const paginaDoFilme = document.getElementById('info')
+const pagina = document.getElementById('infos')
+const tituloFilme = document.getElementById('titulo')
+const dataFilme = document.getElementById('Data')
+const imagemPagina = document.getElementById('imagemPagina')
+const sinopse = document.getElementById('sino')
+
+//------------------------------------------------------------------//
+
+
+const fetchFilmes = async (url) => {
+  const response = await fetch(url);
+  return response.json();
 }
 
-async function alta() {
-    let link = await fetchFilmes(popular)
-    console.log(link.results)
-  
-     for(let i = 0; i <= 6;i++){
-        filmesAlta.innerHTML += `<div id='${i}' class="cartao">
-         <img class="img " onclick=render(${link},${ i}) src="${img}${link.results[i].poster_path}" alt=""> </div>`
+
+const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR&query${pesquisa.value}`;
+
+async function carregarFilmesPopulares() {
+  try {
+    const { results } = await fetchFilmes(popularUrl);
+    renderizarFilmes(results);
+  } catch (error) {
+    console.error('Erro ao carregar filmes populares:', error);
+  }
+}
+
+function renderizarFilmes(filmes) {
+    for(let i = 0; i < 7; i++){
+        const filme = filmes[i];
+        const cartao = document.createElement('div');
+        cartao.className = 'cartao'
+        
+        const img = document.createElement('img');
+        img.className = 'img'
+        img.src = `${imgBaseUrl}${filme.poster_path}`
+        img.alt = filme.title;
+
+        img.addEventListener('click', () =>{
+            render(filme)
+        })
+
+        cartao.appendChild(img);
+        filmesAlta.appendChild(cartao)
 
     }
-   
+
 }
 
-function render(param, nun){
-  console.log(param);
-  console.log(nun)
+function render(filme) {
+
+  pagina.className = 'existe';
+
+  tituloFilme.innerHTML = "";
+
+  const nomeFilme = document.createElement('h1');
+  nomeFilme.textContent = `${filme.title}`
+  tituloFilme.innerHTML = "";
+  tituloFilme.appendChild(nomeFilme)
+
+  const lancamento = document.createElement('p');
+  lancamento.textContent = `Data de Laçamento ${filme.release_date}`
+  lancamento.className = "lacamento"
+  dataFilme.innerHTML = "";
+  dataFilme.appendChild(lancamento)
+
+  const poster = document.createElement('img');
+  poster.src = `${imgBaseUrl}${filme.poster_path}`
+  poster.className = "imagemPoster"
+ imagemPagina.innerHTML = "";
+ imagemPagina.appendChild(poster)
+
+ const resumo = document.createElement('p');
+  resumo.textContent = `${filme.overview}`
+ sinopse.innerHTML = "";
+ sinopse.appendChild(resumo)
+
   
- 
- }
- 
-alta();
+}
+
+//---------------------------------------------------------------------------
 
 
-/*
+
+carregarFilmesPopulares();
+
+
+
+
+
+
+
+
+
+/* 
 
 fetch(`${buscar}&query=jogos mortal`)
 .then((res) => res.json())
